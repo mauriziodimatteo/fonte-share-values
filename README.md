@@ -1,6 +1,6 @@
 # Fon.Te. Share Values Scraper
 
-tl;dr I scraped Fon.Te. share values so that you don't have to.
+TL;DR I scraped Fon.Te. share values so that you don't have to.
 
 ## Quick Links
 - Google Sheet: [[PUBLIC] FonTe - Valori Quota](https://docs.google.com/spreadsheets/d/1c5C-6Ir997is-bw84fqNfvU-AkJUYeC36zY6Sv23SXE/edit?usp=sharing)

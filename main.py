@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 COMPARTO_COL = 'Comparto'
 DATA_COL = 'Data'
 VALORE_COL = 'Valore Quota (EUR)'
+LAST_UPDATE_COL = 'Ultimo Aggiornamento'
 
 
 def last_day_of_month(year, month):
@@ -122,7 +123,7 @@ def write_sheet(quotes_df):
     sheet.values_update(
         f'{SHEET_NAME}!A2',
         params={
-            'valueInputOption': 'RAW'
+            'valueInputOption': 'USER_ENTERED'
         },
         body={
             'values': quotes_tuples
@@ -130,7 +131,7 @@ def write_sheet(quotes_df):
     )
 
 
-def main():
+def run():
     urls = ['https://www.fondofonte.it/gestione-finanziaria/i-valori-quota-dei-comparti/comparto-garantito/',
             'https://www.fondofonte.it/gestione-finanziaria/i-valori-quota-dei-comparti/comparto-bilanciato/',
             'https://www.fondofonte.it/gestione-finanziaria/i-valori-quota-dei-comparti/comparto-crescita/',
@@ -144,12 +145,24 @@ def main():
 
     # Concat quotes in a single dataframe
     quotes_df = pd.concat(quotes, sort=False)
-    quotes_df.columns = [COMPARTO_COL, DATA_COL, VALORE_COL]
+    quotes_df[LAST_UPDATE_COL] = datetime.now().strftime('%d/%m/%Y %H:%M')
+    quotes_df.columns = [COMPARTO_COL, DATA_COL, VALORE_COL, LAST_UPDATE_COL]
 
     # Fix errors and write result
     quotes_df = fix_errors(quotes_df)
     write_sheet(quotes_df)
 
 
+def gcf_fonte_scraper(request):
+    """Responds to any HTTP request.
+          Args:
+              request (flask.Request): HTTP request object.
+   """
+
+    run()
+
+    return 'OK'
+
+
 if __name__ == '__main__':
-    main()
+    run()

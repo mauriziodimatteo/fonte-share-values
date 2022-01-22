@@ -32,10 +32,13 @@ def parse_page(url):
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
 
     # Get and parse HTML
+    print('Getting HTML')
     html_content = requests.get(url, headers=headers).text
+    print('Parsing HTML')
     soup = BeautifulSoup(html_content, 'html.parser')
 
     # Article is the main body
+    print('Extracting content from page')
     article = soup.article
     compartment = article.find(class_="title-page").text
 
@@ -62,6 +65,8 @@ def fix_errors(quotes_df):
     """
     Public quotes contain some errors, this function fixes them.
     """
+
+    print("Fixing known errors in quotes")
 
     # Error #1: "Comparto dinamico" has two quotes form Jul 2016 and June is missing.
     # Fix: the lowest quote is June's.
@@ -115,10 +120,13 @@ def write_sheet(quotes_df):
     scopes = [
         "https://www.googleapis.com/auth/spreadsheets"
     ]
+    print("Authorizing sheet client")
+    print(f'Sheet Key: {sheet_key}, Sheet Name: {SHEET_NAME}')
     creds, _ = google.auth.default(scopes)
     client = gspread.authorize(creds)
     sheet = client.open_by_key(sheet_key)
 
+    print('Writing to sheet')
     quotes_tuples = tuple(quotes_df.itertuples(index=False, name=None))
     sheet.values_update(
         f'{SHEET_NAME}!A2',
@@ -140,11 +148,15 @@ def run():
     # Get quotes for all compartments
     quotes = []
     for url in urls:
+        print(f'Parsing: {url}')
         compartment_quotes = parse_page(url)
         quotes.append(compartment_quotes)
 
     # Concat quotes in a single dataframe
+    print('Merging quotes')
     quotes_df = pd.concat(quotes, sort=False)
+
+    print('Adding last update field')
     quotes_df[LAST_UPDATE_COL] = datetime.now().strftime('%d/%m/%Y %H:%M')
     quotes_df.columns = [COMPARTO_COL, DATA_COL, VALORE_COL, LAST_UPDATE_COL]
 

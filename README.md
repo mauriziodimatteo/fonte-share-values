@@ -1,12 +1,13 @@
 # Fon.Te. Share Values Scraper
 
-TL;DR I scraped Fon.Te. share values so that you don't have to.
+TL;DR I scraped Fon.Te. share values so that you don't have to. 
+Data updates every Sunday at 00:42 CET
 
 ## Quick Links
 - Google Sheet: [[PUBLIC] FonTe - Valori Quota](https://docs.google.com/spreadsheets/d/1c5C-6Ir997is-bw84fqNfvU-AkJUYeC36zY6Sv23SXE/edit?usp=sharing)
 - CSV: [[PUBLIC] FonTe - Valori Quota](https://docs.google.com/spreadsheets/d/1c5C-6Ir997is-bw84fqNfvU-AkJUYeC36zY6Sv23SXE/export?gid=1638616084&format=csv) 
 - TSV: [[PUBLIC] FonTe - Valori Quota](https://docs.google.com/spreadsheets/d/1c5C-6Ir997is-bw84fqNfvU-AkJUYeC36zY6Sv23SXE/export?gid=1638616084&format=tsv)
-- Chart Example (click to open in a new tab) 
+- Chart Example (click on the preview image to open in a new tab) 
 
 [![chart example](./img/chart-example.png)](https://docs.google.com/spreadsheets/d/e/2PACX-1vR4C8ie64z0e-DxAoYcxG1ikHlRCofarP2CjJSiHt4ls-KYf5gegRojwR-4UYT1zeGRGpmjTgDp4wJ6/pubchart?oid=196735282&format=interactive)
 
@@ -17,8 +18,8 @@ TL;DR I scraped Fon.Te. share values so that you don't have to.
 - [Valori Quota: Comparto Crescita](https://www.fondofonte.it/gestione-finanziaria/i-valori-quota-dei-comparti/comparto-crescita/)
 - [Valori Quota: Comprato Dinamico](https://www.fondofonte.it/gestione-finanziaria/i-valori-quota-dei-comparti/comparto-dinamico/)
 
-In this form they are hardly usable. This is my attempt to fix that:
-- in this repo you can find a parser to extract quotes from the web pages and save them to Google Sheet
+In this form they are hardly usable. Here is my attempt to fix that:
+- the repo includes a parser to extract quotes from the web pages and save them to Google Sheet
 - I compared public quotes with what I can see in FonTe customer's portal and fixed a few errors in public numbers
 - you can find the resulting data in the [Quick Links](#quick-links) above.
  

@@ -1,6 +1,6 @@
 import calendar
 import os
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 import google.auth
 import gspread
@@ -157,7 +157,7 @@ def run():
     quotes_df = pd.concat(quotes, sort=False)
 
     print('Adding last update field')
-    quotes_df[LAST_UPDATE_COL] = datetime.now().strftime('%d/%m/%Y %H:%M')
+    quotes_df[LAST_UPDATE_COL] = datetime.now(timezone(timedelta(hours=1))).strftime('%d/%m/%Y %H:%M')
     quotes_df.columns = [COMPARTO_COL, DATA_COL, VALORE_COL, LAST_UPDATE_COL]
 
     # Fix errors and write result

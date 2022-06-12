@@ -16,7 +16,7 @@ Data updates every Sunday at 00:42 CET
 - [Valori Quota: Comparto Garantito](https://www.fondofonte.it/gestione-finanziaria/i-valori-quota-dei-comparti/comparto-garantito/)
 - [Valori Quota: Comparto Bilanciato](https://www.fondofonte.it/gestione-finanziaria/i-valori-quota-dei-comparti/comparto-bilanciato/)
 - [Valori Quota: Comparto Crescita](https://www.fondofonte.it/gestione-finanziaria/i-valori-quota-dei-comparti/comparto-crescita/)
-- [Valori Quota: Comprato Dinamico](https://www.fondofonte.it/gestione-finanziaria/i-valori-quota-dei-comparti/comparto-dinamico/)
+- [Valori Quota: Comparto Dinamico](https://www.fondofonte.it/gestione-finanziaria/i-valori-quota-dei-comparti/comparto-dinamico/)
 
 In this form they are hardly usable. Here is my attempt to fix that:
 - the repo includes a parser to extract quotes from the web pages and save them to Google Sheet
